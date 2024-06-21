@@ -4,4 +4,19 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cucumber = "0.21.1"
+base64 = "0.21"
+chrono = "0.4"
+cucumber = {version = "0.21.1", features = ["tracing","libtest"]}
+futures = "0.3.30"
+hmac = "0.12"
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_urlencoded = "0.6"
+sha2 = "0.10"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1.40"
+
+[[test]]
+name = "cucumber"
+harness = false
