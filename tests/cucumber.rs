@@ -10,10 +10,10 @@ use authenticated_world::authenticated_user_world::AuthenticatedWorld;
 #[tokio::main]
 async fn main() {
     PublicWorld::cucumber()
+        .init_tracing()
         .run("features/publicUser.feature").await;
 
     AuthenticatedWorld::cucumber()
-        .init_tracing()
         .after(|_, _, _, _, _world| {
             async {_world
                     .unwrap()

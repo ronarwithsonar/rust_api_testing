@@ -37,7 +37,7 @@ docker run -e PUBLIC_KEY=<PUBLIC_KEY> -e PRIVATE_KEY=<PRIVATE_KEY> -e TRIGGER=<R
 - **Docker Optimization**: Explore using the `slim-buster` variation of Rust Docker to reduce build times.
 
 ### Learning and Best Practices
-- **Rust Paradigms**: Move away from an OOP mindset and adopt Rust idioms
+- **Rust Paradigms**: Move away from an OOP mindset and adopt Rust idioms (e.g. ownership/borrowing)
 - **Project Structure**: Learn more about structuring Rust projects, particularly around module and library organization.
 
 ## Follow Up Tasks

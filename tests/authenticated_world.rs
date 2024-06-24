@@ -96,13 +96,13 @@ pub mod authenticated_user_world {
         }
     }
     
-    #[derive(Debug, Deserialize)]
+    #[derive(Debug, Deserialize, Clone)]
     pub struct OpenOrdersResultData {
         pub open: HashMap<String, Order>,
     }
     
     #[allow(dead_code)]
-    #[derive(Debug, Default, Deserialize)]
+    #[derive(Debug, Default, Deserialize, Clone)]
     pub struct Order {
         pub refid: Option<String>,
         pub userref: u32,
@@ -124,17 +124,17 @@ pub mod authenticated_user_world {
     }
     
     #[allow(dead_code)]
-    #[derive(Debug, Default, Deserialize)]
+    #[derive(Debug, Default, Deserialize, Clone)]
     pub struct OrderDescr {
-        pair: String,
+        pub pair: String,
         #[serde(rename = "type")]
-        order_type: String,
-        ordertype: String,
-        price: String,
-        price2: String,
-        leverage: String,
-        order: String,
-        close: String,
+        pub order_type: String,
+        pub ordertype: String,
+        pub price: String,
+        pub price2: String,
+        pub leverage: String,
+        pub order: String,
+        pub close: String,
     }
 
     // `World` is your shared, likely mutable state.
@@ -265,7 +265,42 @@ pub mod authenticated_user_steps {
     #[then("I should see my open orders")]
     fn then_assert_expected_number_of_orders(world: &mut AuthenticatedWorld) {
         world.not_implemented();
+
         // assert that the open orders has expected count
         assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.len(), 1);
+
+        // only one order id so lets get it from the open orders response
+        
+        // let mut open_order_id = world
+        //     .open_orders_response
+        //     .result
+        //     .as_mut()
+        //     .unwrap()
+        //     .open
+        //     .keys()
+        //     .clone()
+        //     .filter(|order_id| !order_id.is_empty())
+        //     .collect::<Vec<_>>();
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .descr.pair, "XBTGBP");
+        
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .descr.order_type, "stop-loss");
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .descr.order, "buy 0.00010000 XBTGBP @ stop loss 60000.0");
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .descr.leverage, "none");
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .descr.price, "60000.0");
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .vol, "0.00010000");
+
+        // assert_eq!(world.open_orders_response.result.as_mut().unwrap().open.get(open_order_id.remove(1)).unwrap()
+        //     .trades, None);
     }
 }
