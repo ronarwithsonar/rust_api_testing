@@ -41,6 +41,6 @@ docker run -e PUBLIC_KEY=<PUBLIC_KEY> -e PRIVATE_KEY=<PRIVATE_KEY> -e TRIGGER=<R
 - **Project Structure**: Learn more about structuring Rust projects, particularly around module and library organization.
 
 ## Follow Up Tasks
-- Implement the step to create a stop-loss order that is unlikely to execute in a real-world environment (potentially using traits handle various requests)
+- Implement the step to create a stop-loss order that is unlikely to execute in a real-world environment (potentially using traits to handle various requests)
 - Add a cleanup call to cancel the created order after test execution.
 - Perform a thorough cleanup of dead code in the project.
