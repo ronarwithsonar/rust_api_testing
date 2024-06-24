@@ -1,12 +1,8 @@
-use cucumber::{given, when, then, World};
-use reqwest::Error;
-use serde::Deserialize;
-use std::collections::HashMap;
-use tracing::{debug, error};
-use std::env;
-
 pub mod public_user_world {
-    pub use super::*;
+    use cucumber::World;
+    use serde::Deserialize;
+    use std::collections::HashMap;
+    use std::env;
 
     pub struct ApiHost {
         pub host: String,
@@ -99,13 +95,16 @@ pub mod public_user_world {
 }
 
 pub mod public_user_steps {
-    pub use super::*;
-    use public_user_world::{
+    use cucumber::{given, when, then};
+    use reqwest::Error;
+    use super::public_user_world::{
         ApiHost,
         PublicWorld, 
         SystemStatusResponse, 
         TickerResponse
     };
+    use std::collections::HashMap;
+    use tracing::{debug, error};
 
     #[given("I am a public user")]
     fn given_public_user(world: &mut PublicWorld) {

@@ -1,18 +1,13 @@
-use cucumber::{given, when, then, World};
-use reqwest::Error;
-use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use tracing::{info, error};
-use base64::{Engine as _, engine::general_purpose};
-use chrono::Utc;
-use hmac::{Hmac, Mac};
-use reqwest::header::{HeaderMap, HeaderValue, CONTENT_TYPE};
-use serde_urlencoded;
-use sha2::{Digest, Sha256, Sha512};
-use std::env;
-
 pub mod authenticated_user_world {
-    pub use super::*;
+    use cucumber::World;
+    use serde::{Deserialize, Serialize};
+    use std::collections::HashMap;
+    use tracing::info;
+    use base64::{Engine as _, engine::general_purpose};
+    use hmac::{Hmac, Mac};
+    use serde_urlencoded;
+    use sha2::{Digest, Sha256, Sha512};
+    use std::env;
 
     #[derive(Debug, Default)]
     pub struct User {
@@ -174,14 +169,18 @@ pub mod authenticated_user_world {
 }
 
 pub mod authenticated_user_steps {
-    pub use super::*;
-    use authenticated_user_world::{
+    use chrono::Utc;
+    use cucumber::{given, when, then};
+    use reqwest::header::{HeaderMap, HeaderValue, CONTENT_TYPE};
+    use reqwest::Error;
+    use super::authenticated_user_world::{
         ApiHost,
         AuthenticatedWorld, 
         OpenOrdersRequest, 
         OpenOrdersResponse, 
         User
     };
+    use tracing::error;
 
     #[given("I am authenticated")]
     async fn given_authenicated(world: &mut AuthenticatedWorld) {
