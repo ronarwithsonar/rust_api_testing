@@ -11,6 +11,7 @@ An exercise in using Cucumber, Rust, and Docker to test APIs.
 
 ## Important Notes
 - There are unimplemented steps that ***will*** cause test failures. This ensures tests do not appear to be passing when they are not actually running.
+- Any changes in the project locally will require rebuilding the docker image
 
 ## Building the Docker Image
 Navigate to the project directory and build the Docker image:
@@ -37,10 +38,10 @@ docker run -e PUBLIC_KEY=<PUBLIC_KEY> -e PRIVATE_KEY=<PRIVATE_KEY> -e TRIGGER=<R
 - **Docker Optimization**: Explore using the `slim-buster` variation of Rust Docker to reduce build times.
 
 ### Learning and Best Practices
-- **Rust Paradigms**: Move away from an OOP mindset and adopt Rust idioms (e.g. ownership/borrowing)
+- **Rust Paradigms**: Move away from an OOP mindset and adopt Rust idioms e.g. ownership/borrowing, functional programming, etc.
 - **Project Structure**: Learn more about structuring Rust projects, particularly around module and library organization.
 
 ## Follow Up Tasks
-- Implement the step to create a stop-loss order that is unlikely to execute in a real-world environment (potentially using traits to handle various requests)
+- Implement the step to create a stop-loss order that is unlikely to execute in a real-world environment (potentially using traits to process various requests)
 - Add a cleanup call to cancel the created order after test execution.
 - Perform a thorough cleanup of dead code in the project.
