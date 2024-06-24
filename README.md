@@ -9,6 +9,9 @@ An exercise in using Cucumber, Rust, and Docker to test APIs
 - GBP funds
 - a stop-loss trigger for buying BTC with GBP which will not execute in the current market condition (defaulted to 60000) -> Steps to use this not implemented yet
 
+## To Note
+- there are unimplemented steps which ***will*** cause a test failure. Don't want a test to appear to be passing when it's not actually running..
+
 ## Building the docker image
 ```bash
 cd path/to/project

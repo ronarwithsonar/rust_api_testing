@@ -160,6 +160,7 @@ pub mod authenticated_user_world {
                 .expect("No open order response. Ensure you have fetched open orders.")
                 .open
             );
+            // cancel any working orders here
             self.user = User::default();
             self.open_orders_response = OpenOrdersResponse::default();
             self.nonce = 0;
@@ -238,13 +239,13 @@ pub mod authenticated_user_steps {
         // generate signature
         // create a conditional stop loss order with a price higher than the current price
 
-        // let postdata: String = serde_urlencoded::to_string(
+        // let _postdata: String = serde_urlencoded::to_string(
         //     &AddOrderRequest {
         //         nonce: world.nonce,
         //         pair: "XBTGBP".to_string(),
         //         order_type: "buy".to_string(),
         //         ordertype: "stop-loss".to_string(),
-        //         price: "600000".to_string(),
+        //         price: env::var("TRIGGER").expect("600000"),
         //         volume: "0.0001".to_string(),
         //         leverage: "none".to_string(),
         //         time_in_force: "gtc".to_string(),
